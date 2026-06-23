@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IGL Distilleries | Premium Spirits</title>
+    <meta name="description" content="Discover the heritage, craft, and premium spirits of IGL Distilleries. Explore our botanicals, timeline, and award-winning creations.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quintessential&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-cream: #E5E0D8; /* Slightly earthier, grittier cream */
+            --color-earth: #7A5B4C; /* Darker earth */
+            --color-earth-dark: #3A2E25; /* Deeper vintage dark brown */
+            --color-earth-light: #A89588; 
+            --color-accent: #B89A6A; /* Tarnished gold */
+            --color-text: #2C2925;
+            --color-text-light: #59524A;
+            --font-heading: 'Quintessential', serif;
+            --font-body: 'Outfit', sans-serif;
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-cream);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            /* Wilder, grainier texture overlay */
+            background-image: url('data:image/svg+xml;utf8,<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="5" stitchTiles="stitch"/></filter><rect width="200" height="200" filter="url(%23noise)" opacity="0.08"/></svg>');
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        /* --- Ticker Tape --- */
+        .ticker-wrap {
+            width: 100%;
+            overflow: hidden;
+            background-color: #1a2520; /* Deep forest green */
+            color: #E5E0D8;
+            padding: 15px 0;
+            border-top: 1px solid rgba(229, 224, 216, 0.2);
+            border-bottom: 1px solid rgba(229, 224, 216, 0.2);
+            position: relative;
+            z-index: 50;
+            display: flex;
+            white-space: nowrap;
+        }
+
+        .ticker {
+            display: flex;
+            flex-shrink: 0;
+            animation: ticker 30s linear infinite;
+        }
+
+        .ticker-item {
+            display: inline-block;
+            padding: 0 2rem;
+            font-size: 1.2rem;
+            font-family: var(--font-heading);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        @keyframes ticker {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        section {
+            padding: 100px 5%;
+            position: relative;
+        }
+
+        /* --- Header (Pill Shape) --- */
+        header {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            background-color: transparent;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            z-index: 1000;
+            transition: all 0.4s ease;
+        }
+
+        .header-scrolled {
+            background: rgba(245, 242, 235, 0.7);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            padding: 15px 5%;
+        }
+
+        .header-logo-group {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-circle {
+            width: 45px;
+            height: 45px;
+            background-color: transparent;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-earth-dark);
+        }
+        
+        .logo-svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        .header-nav a {
+            color: var(--color-earth-dark);
+            text-decoration: none;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        .header-nav a:hover {
+            opacity: 0.7;
+        }
+
+        /* --- Hero Section Interactive --- */
+        .hero-wrapper {
+            height: 150vh; 
+            position: relative;
+            background-color: var(--color-cream);
+        }
+
+        .hero-sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            overflow: hidden;
+            background-color: var(--color-cream);
+            padding-top: 0; 
+            z-index: 10;
+        }
+
+        .hero-interactive-card {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 0 rgba(0,0,0,0);
+            background-color: #fff;
+            will-change: width, height, border-radius, transform, box-shadow;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: inherit;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-initial-content {
+            position: absolute;
+            top: 40%;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transform: translateY(-50%);
+        }
+
+        .hero-initial-content h1 {
+            color: white;
+            font-size: 5rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        .hero-initial-content p {
+            color: rgba(255,255,255,0.8);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .hero-postcard-content {
+            position: absolute;
+            z-index: 10;
+            opacity: 1;
+            padding: 40px;
+            text-align: center;
+            max-width: 800px;
+            top: 60%;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            color: var(--color-cream);
+            margin-bottom: 20px;
+            transition: color 0.3s;
+        }
+        
+        .hero-interactive-card.is-postcard .hero-content h1 {
+            color: var(--color-earth-dark);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            transition: color 0.3s;
+        }
+        
+        .hero-interactive-card.is-postcard .hero-content p {
+            color: var(--color-text-light);
+        }
+        
+        .hero-interactive-card.is-postcard .hero-content p.italic-text {
+            color: var(--color-earth);
+        }
+
+        /* --- Chambal Styled Legacy Section --- */
+        .chambal-legacy {
+            background-color: #F8F5EF; /* Light cream background from Chambal */
+            padding: 120px 8%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .drawing-reveal-wrapper {
+            width: 0%;
+            max-width: 1200px;
+            height: 450px;
+            margin: 30px auto;
+            overflow: hidden;
+            transition: width 2.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        
+        .drawing-reveal-wrapper.is-visible {
+            width: 100%;
+        }
+        
+        .legacy-sketch-img {
+            width: 1200px;
+            max-width: 1200px;
+            height: 450px;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+        }
+        
+        @media (max-width: 1000px) {
+            .legacy-sketch-img {
+                width: 100vw;
+            }
+        }
+
+        /* Decorative branches/birds background */
+        .chambal-legacy::before, .chambal-legacy::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+        
+        .chambal-legacy::before {
+            top: 20px;
+            left: 20px;
+            background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="%234A2E1B"><path d="M10,90 C30,70 20,40 50,10 C45,25 60,30 40,50 C60,60 80,40 90,20 C80,50 90,80 50,70 C30,90 20,80 10,90 Z"/></svg>');
+        }
+        
+        .chambal-legacy::after {
+            top: 20px;
+            right: 20px;
+            transform: scaleX(-1);
+            background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="%234A2E1B"><path d="M10,90 C30,70 20,40 50,10 C45,25 60,30 40,50 C60,60 80,40 90,20 C80,50 90,80 50,70 C30,90 20,80 10,90 Z"/></svg>');
+        }
+
+        .chambal-image {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .chambal-image svg {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.05));
+        }
+
+        .chambal-content {
+            flex: 1;
+            min-width: 350px;
+            max-width: 650px;
+        }
+
+        .chambal-content h2 {
+            font-family: var(--font-heading);
+            color: #7B3A2A; /* Deep rust/brown */
+            font-size: 3.2rem;
+            letter-spacing: 2px;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            font-weight: 500;
+            text-transform: none;
+        }
+
+        .chambal-content p {
+            color: var(--color-text-light);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        /* --- Distillery Locations Section (Map) --- */
+        .locations {
+            background-color: #E8DFCB; /* Parchment vintage paper matching map */
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100" height="100" filter="url(%23noise)" opacity="0.05"/></svg>');
+            padding: 100px 5%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .locations-content {
+            max-width: 500px;
+        }
+
+        .locations-content .eyebrow-text {
+            color: #8C6A5D; /* Vintage muted text */
+            font-family: var(--font-body);
+            letter-spacing: 2px;
+        }
+
+        .locations-content h2 {
+            font-size: 3.5rem;
+            color: #31251A; /* Dark brown */
+            margin-bottom: 30px;
+            font-family: var(--font-heading);
+            font-weight: 500;
+        }
+
+        .locations-content p.intro {
+            font-size: 1.1rem;
+            color: #59524A;
+            margin-bottom: 40px;
+            font-family: var(--font-body);
+        }
+
+        .location-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .location-item {
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .location-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .location-item.kashipur::before {
+            background-color: #D4B982; /* Gold dot */
+            box-shadow: 0 0 0 3px rgba(212, 185, 130, 0.3);
+        }
+
+        .location-item.gorakhpur::before {
+            background-color: #C24A3F; /* Red dot */
+            box-shadow: 0 0 0 3px rgba(194, 74, 63, 0.3);
+        }
+
+        .location-item h3 {
+            font-family: var(--font-heading);
+            font-weight: 500;
+            font-size: 1.5rem;
+            color: #31251A;
+            margin-bottom: 5px;
+        }
+
+        .location-item p {
+            font-size: 0.9rem;
+            color: #59524A;
+            font-family: var(--font-body);
+        }
+
+        .locations-map {
+            position: relative;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .locations-map img {
+            border: 2px solid rgba(212, 185, 130, 0.3);
+            border-radius: 4px;
+        }
+
+        /* --- Portfolio Section (Vintage Styled) --- */
+        .portfolio-section {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .portfolio-category {
+            display: flex;
+            align-items: stretch;
+            min-height: 80vh;
+            width: 100%;
+        }
+
+        .portfolio-category.row-reverse {
+            flex-direction: row-reverse;
+        }
+
+        .category-content {
+            flex: 1;
+            padding: 80px 10%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .category-content .product-type {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+            opacity: 0.8;
+            font-family: var(--font-body);
+        }
+
+        .category-content h2 {
+            font-size: 4rem;
+            font-family: var(--font-heading);
+            margin-bottom: 30px;
+            line-height: 1.1;
+            font-weight: 500;
+        }
+
+        .category-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            opacity: 0.9;
+            max-width: 500px;
+            margin-bottom: 40px;
+        }
+
+        .category-content .read-more {
+            display: inline-block;
+            border-bottom: 1px solid currentColor;
+            padding-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            color: inherit;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+            align-self: flex-start;
+        }
+
+        .category-content .read-more:hover {
+            opacity: 0.7;
+        }
+
+        .category-image {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+            padding: 0; /* Removed padding for full extension */
+        }
+
+        .category-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.8s ease;
+        }
+        
+        .category-image .img-hover {
+            opacity: 0;
+        }
+
+        .portfolio-category:not(.no-zoom) .category-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .category-image:hover .img-hover {
+            opacity: 1;
+        }
+        
+        .category-image:hover .img-base {
+            opacity: 0;
+        }
+
+        /* Hover Aromatics */
+        .aromatic-item {
+            position: absolute;
+            font-size: 2.5rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform: scale(0.5) translate(0, 0);
+            z-index: 10;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.4));
+        }
+
+        .portfolio-category:hover .aromatic-item.pos-1 { opacity: 1; transform: scale(1) translate(-120px, -150px) rotate(-15deg); }
+        .portfolio-category:hover .aromatic-item.pos-2 { opacity: 1; transform: scale(1.2) translate(140px, -100px) rotate(20deg); }
+        .portfolio-category:hover .aromatic-item.pos-3 { opacity: 1; transform: scale(0.9) translate(-150px, 120px) rotate(-30deg); }
+        .portfolio-category:hover .aromatic-item.pos-4 { opacity: 1; transform: scale(1.1) translate(130px, 160px) rotate(10deg); }
+        .portfolio-category:hover .aromatic-item.pos-5 { opacity: 1; transform: scale(0.8) translate(-50px, -200px) rotate(45deg); }
+        .portfolio-category:hover .aromatic-item.pos-6 { opacity: 1; transform: scale(1) translate(60px, 220px) rotate(-45deg); }
+
+        /* --- 3D Scroll Reveal Transitions --- */
+        .scroll-3d-reveal {
+            opacity: 0;
+            transform: perspective(1000px) rotateX(10deg) translateY(40px);
+            transition: opacity 1s ease-out, transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+            will-change: opacity, transform;
+        }
+
+        .scroll-3d-reveal.is-visible {
+            opacity: 1;
+            transform: perspective(1000px) rotateX(0deg) translateY(0);
+        }
+
+        /* --- Baagh-Style Footer --- */
+        .baagh-footer {
+            background-color: #E8EBE3; /* Pastel green */
+            color: #1a1715;
+            padding: 80px 5% 30px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: -1px;
+            color: #1a1715;
+        }
+
+        .footer-links-col {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .footer-links-col a {
+            color: #1a1715;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-links-col a:hover {
+            opacity: 0.6;
+        }
+
+        .footer-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .footer-contact p {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .footer-newsletter {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 300px;
+        }
+
+        .footer-newsletter h4 {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            font-family: var(--font-body);
+            font-weight: 600;
+        }
+
+        .footer-newsletter form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .footer-newsletter label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .footer-newsletter input {
+            padding: 10px;
+            border: 1px solid rgba(0,0,0,0.2);
+            background: #fff;
+            font-family: var(--font-body);
+        }
+
+        .footer-newsletter button {
+            align-self: flex-start;
+            padding: 8px 20px;
+            background: #e0e0e0;
+            border: 1px solid rgba(0,0,0,0.2);
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .footer-bottom {
+            font-size: 0.75rem;
+            color: rgba(26,23,21,0.6);
+            border-top: none;
+            text-transform: uppercase;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .locations {
+                grid-template-columns: 1fr;
+            }
+            .header-nav {
+                display: none; /* Hide nav on small screens for simplicity */
+            }
+            .grain-to-glass-header h2, .locations-content h2, .aromatics-header h2 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="mainHeader" style="opacity: 0; pointer-events: none; transition: opacity 0.5s ease; position: fixed; top: 20px; z-index: 100;">
+        <div class="header-logo-group">
+            <div class="logo">
+                <img src="assets/images/igl_logo.png" alt="IGL Logo" style="height: 40px; width: auto;">
+            </div>
+        </div>
+        <nav class="header-nav">
+            <a href="#legacy">LEGACY</a>
+            <a href="#craft">CRAFT</a>
+            <a href="#portfolio">PORTFOLIO</a>
+            <a href="#awards">AWARDS</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section Interactive -->
+    <section class="hero-wrapper" id="heroWrapper">
+        <div class="hero-sticky">
+            <div class="hero-interactive-card" id="heroInteractiveCard">
+                <img src="assets/images/hero_mono.png" class="hero-video" alt="Soulmate Blu Whisky and Zumba Spiced Rum Monochrome" style="object-position: center; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;">
+                <img src="assets/images/hero_color.png" class="hero-video" id="heroColorLayer" alt="Soulmate Blu Whisky and Zumba Spiced Rum Color" style="object-position: center; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; transition: opacity 0.1s linear;">
+                <div class="hero-overlay" style="background: rgba(0, 0, 0, 0.4); transition: background 0.5s; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2;"></div>
+                <div id="heroPostcardContent" style="opacity: 0; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 4; pointer-events: none;">
+                    <!-- Clean Solid 3D Wax Stamp using Uploaded Image -->
+                    <div style="position: absolute; right: 4%; top: 15%; width: 140px; height: 140px; z-index: 10;">
+                        <img src="assets/images/wax_stamp.png" alt="27 Years Legacy Stamp" style="width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));">
+                    </div>
+                </div>
+            </div>
+            
+            <div style="position: relative; width: 100%; max-width: 800px; margin-top: 40px; min-height: 200px;">
+                <div id="heroInitialContent" style="opacity: 1; position: absolute; top: 0; left: 0; width: 100%; text-align: center; padding: 0 20px;">
+                    <h1 style="font-family: var(--font-heading); font-size: 3.5rem; color: var(--color-earth-dark); margin: 0; font-weight: 600; letter-spacing: 2px;">India Glycols Potable Spirits</h1>
+                </div>
+                
+                <div id="heroTextContent" style="opacity: 0; transform: translateY(20px); position: absolute; top: 0; left: 0; width: 100%; text-align: center; padding: 0 20px;">
+                    <h2 style="font-family: var(--font-heading); font-size: 3.5rem; color: var(--color-earth-dark); margin-bottom: 20px; font-weight: 600;">Crafted in Reverence.</h2>
+                    <p style="font-size: 1.2rem; color: var(--color-text-light); line-height: 1.6;">Discover the rich heritage and exceptional quality of IGL Distilleries. Rooted in tradition, reimagined for today. A journey of taste through our carefully selected geographic locations.<br><br><i>An ode to stillness in motion.</i></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ticker Tape -->
+    <div class="ticker-wrap">
+        <div class="ticker">
+            <span class="ticker-item">ALCOHOL</span>
+            <span class="ticker-item">•</span>
+            <span class="ticker-item">शराब</span>
+            <span class="ticker-item">•</span>
+            <span class="ticker-item">ಮದ್ಯ</span>
+            <span class="ticker-item">•</span>
+            <span class="ticker-item">மது</span>
+            <span class="ticker-item">•</span>
+            <span class="ticker-item">ALCOOL</span>
+            <span class="ticker-item">•</span>
+            <span class="ticker-item">ALCOHOL</span>
+            <span class="ticker-item">•</span>
+            <span class="ticker-item">शराब</span>
+            <span class="ticker-item">•</span>
+            <span class="ticker-item">ಮದ್ಯ</span>
+            <span class="ticker-item">•</span>
+            <span class="ticker-item">மது</span>
+            <span class="ticker-item">•</span>
+            <span class="ticker-item">ALCOOL</span>
+            <span class="ticker-item">•</span>
+            <span class="ticker-item">ALCOHOL</span>
+            <span class="ticker-item">•</span>
+            <span class="ticker-item">शराब</span>
+            <span class="ticker-item">•</span>
+            <span class="ticker-item">ಮದ್ಯ</span>
+            <span class="ticker-item">•</span>
+            <span class="ticker-item">மது</span>
+            <span class="ticker-item">•</span>
+            <span class="ticker-item">ALCOOL</span>
+            <span class="ticker-item">•</span>
+            <span class="ticker-item">ALCOHOL</span>
+            <span class="ticker-item">•</span>
+            <span class="ticker-item">शराब</span>
+            <span class="ticker-item">•</span>
+            <span class="ticker-item">ಮದ್ಯ</span>
+            <span class="ticker-item">•</span>
+            <span class="ticker-item">மது</span>
+            <span class="ticker-item">•</span>
+            <span class="ticker-item">ALCOOL</span>
+            <span class="ticker-item">•</span>
+        </div>
+        <div class="ticker" aria-hidden="true">
+            <span class="ticker-item">ALCOHOL</span>
+            <span class="ticker-item">•</span>
+            <span class="ticker-item">शराब</span>
+            <span class="ticker-item">•</span>
+            <span class="ticker-item">ಮದ್ಯ</span>
+            <span class="ticker-item">•</span>
+            <span class="ticker-item">மது</span>
+            <span class="ticker-item">•</span>
+            <span class="ticker-item">ALCOOL</span>
+            <span class="ticker-item">•</span>
+            <span class="ticker-item">ALCOHOL</span>
+            <span class="ticker-item">•</span>
+            <span class="ticker-item">शराब</span>
+            <span class="ticker-item">•</span>
+            <span class="ticker-item">ಮದ್ಯ</span>
+            <span class="ticker-item">•</span>
+            <span class="ticker-item">மது</span>
+            <span class="ticker-item">•</span>
+            <span class="ticker-item">ALCOOL</span>
+            <span class="ticker-item">•</span>
+            <span class="ticker-item">ALCOHOL</span>
+            <span class="ticker-item">•</span>
+            <span class="ticker-item">शराब</span>
+            <span class="ticker-item">•</span>
+            <span class="ticker-item">ಮದ್ಯ</span>
+            <span class="ticker-item">•</span>
+            <span class="ticker-item">மது</span>
+            <span class="ticker-item">•</span>
+            <span class="ticker-item">ALCOOL</span>
+            <span class="ticker-item">•</span>
+            <span class="ticker-item">ALCOHOL</span>
+            <span class="ticker-item">•</span>
+            <span class="ticker-item">शराब</span>
+            <span class="ticker-item">•</span>
+            <span class="ticker-item">ಮದ್ಯ</span>
+            <span class="ticker-item">•</span>
+            <span class="ticker-item">மது</span>
+            <span class="ticker-item">•</span>
+            <span class="ticker-item">ALCOOL</span>
+            <span class="ticker-item">•</span>
+        </div>
+    </div>
+
+    <!-- Video Break 1 -->
+    <section style="padding: 0; width: 100%; height: 70vh; overflow: hidden; position: relative;">
+        <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; filter: sepia(0.3) contrast(1.1);">
+            <source src="assets/videos/1.mp4" type="video/mp4">
+        </video>
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(58, 46, 37, 0.6) 0%, rgba(58, 46, 37, 0.2) 50%, rgba(58, 46, 37, 0.8) 100%); pointer-events: none;"></div>
+    </section>
+
+    <!-- From Grain to Glass Section (Chambal Style) -->
+    <section class="chambal-legacy" id="legacy">
+        <div class="chambal-content scroll-3d-reveal" style="max-width: 800px; margin: 0 auto;">
+            <h2>IGL Legacy, Heritage and the Untamed Charm of Nature</h2>
+            <div class="drawing-reveal-wrapper scroll-3d-reveal">
+                <img src="assets/images/legacy_sketch.jpg" alt="Botanical Sketch" class="legacy-sketch-img">
+            </div>
+            <p>India Glycols is one of the finest spirits producers in India offering a perfect balance of craftsmanship and flavor. Made with the finest ingredients and expert distillation, it delivers a smooth, bold taste that captures the spirit of excellence in every bottle.</p>
+            <p>Unlocking the special mystery of our premium spirits, it's a journey from our multi-column distillation to hand-selected botanicals, creating an alcohol that captivates the senses.</p>
+            <p>With three generations of expertise, this process creates a <strong>smooth and refined texture</strong> making it the finest in India. Each sip uncovers a wild, untamed flavor, echoing the land's essence and hidden wonders within every drop.</p>
+        </div>
+    </section>
+
+    <!-- Locations Section (Map) -->
+    <section class="locations" id="craft">
+        <div class="locations-content scroll-3d-reveal">
+            <span class="eyebrow-text">THE NORTHERN CRAFT CORRIDOR</span>
+            <h2>Distillery Estates. The Heart of IGL.</h2>
+            <p class="intro">Spanning the rich landscapes of North India, our production corridor bridges time-honored tradition with modern distillation. These estates are where our legacy is crafted every day.</p>
+            
+            <div class="location-list">
+                <div class="location-item kashipur">
+                    <h3>Kashipur, Uttarakhand</h3>
+                    <p>Our foundational estate. A continuous distillery where absolute purity begins, serving as the bedrock for our finest spirits.</p>
+                </div>
+                <div class="location-item gorakhpur">
+                    <h3>Gorakhpur, Uttar Pradesh</h3>
+                    <p>Our expansive grain-based plant. The cradle of our premium expansion, marrying incredible scale with uncompromising quality.</p>
+                </div>
+            </div>
+        </div>
+        <div class="locations-map scroll-3d-reveal" style="position: relative; display: flex; justify-content: center; align-items: center;">
+            <!-- Map seamlessly blended into background -->
+            <img src="assets/images/map_india.jpg" alt="IGL Distillery Locations in India" style="width: 100%; max-width: 850px; height: auto; mix-blend-mode: multiply;" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/e/e4/India_Map.jpg';">
+        </div>
+    </section>
+
+    <!-- Portfolio Section (Vintage Styled) -->
+    <div class="portfolio-section" id="portfolio">
+        
+        <!-- Whisky Section -->
+        <section class="portfolio-category no-zoom" style="background-color: #EAF1F8; color: #31251A; border-top: 1px solid rgba(0,0,0,0.1);">
+            <div class="category-content scroll-3d-reveal">
+                <div class="product-type" style="color: #8C6A5D;">WHISKY</div>
+                <h2 style="color: #31251A;">Soulmate Blu Whisky</h2>
+                <p style="color: #59524A; font-family: var(--font-body);">The finest Indian grains matured in oak casks for a smooth, rich expression of Indian tradition and craft, delivering a truly distinguished character.</p>
+                <div style="margin-top: 30px; font-size: 0.9rem; font-family: var(--font-body);">
+                    <div style="display: flex; margin-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 5px;">
+                        <span style="color: #8C6A5D; width: 80px; font-weight: 600; font-size: 0.75rem; letter-spacing: 1px;">AROMA</span>
+                        <span style="color: #59524A;">Toasted oak, grain sweetness</span>
+                    </div>
+                    <div style="display: flex; margin-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 5px;">
+                        <span style="color: #8C6A5D; width: 80px; font-weight: 600; font-size: 0.75rem; letter-spacing: 1px;">TASTE</span>
+                        <span style="color: #59524A;">Rounded malt, warm spice</span>
+                    </div>
+                    <div style="display: flex;">
+                        <span style="color: #8C6A5D; width: 80px; font-weight: 600; font-size: 0.75rem; letter-spacing: 1px;">FINISH</span>
+                        <span style="color: #59524A;">Soft, amber, lingering</span>
+                    </div>
+                </div>
+            </div>
+            <div class="category-image scroll-3d-reveal">
+                <img src="assets/images/whisky_default.png" alt="Soulmate Blu Whisky" class="img-base">
+                <img src="assets/images/whisky_hover.png" alt="Soulmate Blu Whisky Hover" class="img-hover">
+            </div>
+        </section>
+
+        <!-- Vodka Section -->
+        <section class="portfolio-category row-reverse no-zoom" style="background-color: #FFF1E5; color: #31251A; border-top: 1px solid rgba(0,0,0,0.1);">
+            <div class="category-content scroll-3d-reveal">
+                <div class="product-type" style="color: #8C6A5D;">PREMIUM VODKA</div>
+                <h2 style="color: #31251A;">IGL Premium Vodka</h2>
+                <p style="color: #59524A; font-family: var(--font-body);">Filtered to perfection with imported flavours. A clean spirit that brings vibrant clarity and unparalleled smoothness for an elevated tasting experience.</p>
+                
+                <!-- Botanicals Integration Removed -->
+
+                <div style="margin-top: 20px; font-size: 0.9rem; font-family: var(--font-body);">
+                    <div style="display: flex; margin-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 5px;">
+                        <span style="color: #8C6A5D; width: 80px; font-weight: 600; font-size: 0.75rem; letter-spacing: 1px;">AROMA</span>
+                        <span style="color: #59524A;">Clean spirit, citrus lift</span>
+                    </div>
+                    <div style="display: flex; margin-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 5px;">
+                        <span style="color: #8C6A5D; width: 80px; font-weight: 600; font-size: 0.75rem; letter-spacing: 1px;">TASTE</span>
+                        <span style="color: #59524A;">Neutral grain, fruit accents</span>
+                    </div>
+                    <div style="display: flex;">
+                        <span style="color: #8C6A5D; width: 80px; font-weight: 600; font-size: 0.75rem; letter-spacing: 1px;">FINISH</span>
+                        <span style="color: #59524A;">Extra smooth, bright</span>
+                    </div>
+                </div>
+            </div>
+            <div class="category-image scroll-3d-reveal">
+                <img src="assets/images/vodka_default.png" alt="Amazing Vodka" class="img-base">
+                <img src="assets/images/vodka_hover.png" alt="Amazing Vodka Hover" class="img-hover">
+            </div>
+        </section>
+
+        <!-- Rum Section -->
+        <section class="portfolio-category no-zoom" style="background-color: #FDF4E3; color: #31251A; border-top: 1px solid rgba(0,0,0,0.1);">
+            <div class="category-content scroll-3d-reveal">
+                <div class="product-type" style="color: #8C6A5D;">RUM</div>
+                <h2 style="color: #31251A;">Beach House Rum</h2>
+                <p style="color: #59524A; font-family: var(--font-body);">Beach House brings a naturally vibrant profile, adding a richer festive warmth for a truly lively and memorable spirit experience.</p>
+                <div style="margin-top: 30px; font-size: 0.9rem; font-family: var(--font-body);">
+                    <div style="display: flex; margin-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 5px;">
+                        <span style="color: #8C6A5D; width: 80px; font-weight: 600; font-size: 0.75rem; letter-spacing: 1px;">AROMA</span>
+                        <span style="color: #59524A;">Lemon zest, cane, spice</span>
+                    </div>
+                    <div style="display: flex; margin-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 5px;">
+                        <span style="color: #8C6A5D; width: 80px; font-weight: 600; font-size: 0.75rem; letter-spacing: 1px;">TASTE</span>
+                        <span style="color: #59524A;">Bright citrus or black spice</span>
+                    </div>
+                    <div style="display: flex;">
+                        <span style="color: #8C6A5D; width: 80px; font-weight: 600; font-size: 0.75rem; letter-spacing: 1px;">FINISH</span>
+                        <span style="color: #59524A;">Fresh, lively, warming</span>
+                    </div>
+                </div>
+            </div>
+            <div class="category-image scroll-3d-reveal">
+                <img src="assets/images/rum_default.png" alt="Beach House Rum" class="img-base">
+                <img src="assets/images/rum_hover.png" alt="Beach House Rum Hover" class="img-hover">
+            </div>
+        </section>
+
+        <!-- Economy Spirits -->
+        <section class="portfolio-category row-reverse no-zoom" style="background-color: #FDF9F1; color: #31251A; border-top: 1px solid rgba(0,0,0,0.1);">
+            <div class="category-content scroll-3d-reveal">
+                <div class="product-type" style="color: #6B8E23;">ECONOMY SPIRITS</div>
+                <h2 style="color: #31251A; display: flex; align-items: center; gap: 25px; flex-wrap: wrap; margin-bottom: 20px;">
+                    <span style="margin-right: 10px;">Bunty Series</span>
+                    <div style="display: flex; gap: 8px; align-items: center; transform: translateY(-3px);">
+                        <span style="font-family: var(--font-body); font-size: 0.6rem; background: linear-gradient(135deg, #d4af37 0%, #aa7700 100%); color: white; padding: 5px 12px; border-radius: 30px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; box-shadow: 0 4px 10px rgba(212,175,55,0.4); border: 1px solid rgba(255,255,255,0.3); display: flex; align-items: center; gap: 4px;">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+                            Record Breaking
+                        </span>
+                        <span style="font-family: var(--font-body); font-size: 0.6rem; background: #6B8E23; color: white; padding: 5px 12px; border-radius: 30px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; box-shadow: 0 4px 10px rgba(107,142,35,0.3); display: flex; align-items: center; gap: 4px;">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                            Best-Selling
+                        </span>
+                    </div>
+                </h2>
+                <p style="color: #59524A; font-family: var(--font-body);">Uncompromising quality crafted for everyone. Our value leaders provide an accessible entry point to the IGL legacy without sacrificing the smoothness you expect.</p>
+                <div style="margin-top: 30px; font-size: 0.9rem; font-family: var(--font-body);">
+                    <div style="display: flex; margin-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 5px;">
+                        <span style="color: #6B8E23; width: 80px; font-weight: 600; font-size: 0.75rem; letter-spacing: 1px;">AROMA</span>
+                        <span style="color: #59524A;">Smoke, floral grain, molasses</span>
+                    </div>
+                    <div style="display: flex; margin-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 5px;">
+                        <span style="color: #6B8E23; width: 80px; font-weight: 600; font-size: 0.75rem; letter-spacing: 1px;">TASTE</span>
+                        <span style="color: #59524A;">Nutty whisky, character rum</span>
+                    </div>
+                    <div style="display: flex;">
+                        <span style="color: #6B8E23; width: 80px; font-weight: 600; font-size: 0.75rem; letter-spacing: 1px;">FINISH</span>
+                        <span style="color: #59524A;">Premium, memorable, broad</span>
+                    </div>
+                </div>
+            </div>
+            <div class="category-image scroll-3d-reveal">
+                <img src="assets/images/bunty_default.png" alt="Bunty Economy Spirits" class="img-base">
+                <img src="assets/images/bunty_hover.png" alt="Bunty Economy Spirits Hover" class="img-hover">
+            </div>
+        </section>
+        
+    </div>
+
+    <!-- Continuous Awards & Footer Section -->
+    <div style="position: relative; width: 100%; overflow: hidden; background-color: #1A1512;">
+        <!-- Single Background Video for both -->
+        <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; filter: sepia(0.2) contrast(1.1) brightness(0.6); z-index: 0;">
+            <source src="assets/videos/2.mp4" type="video/mp4">
+        </video>
+        <!-- Gradient Overlay fading from transparent/light dark to very dark at the bottom -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(38,29,21,0.5) 0%, rgba(38,29,21,0.7) 50%, rgba(15,10,8,0.95) 100%); z-index: 1; pointer-events: none;"></div>
+
+        <!-- Awards Section Content -->
+        <section id="awards" style="padding: 120px 0; position: relative; z-index: 10; display: flex; align-items: center; justify-content: center; min-height: 50vh;">
+            <div class="scroll-3d-reveal" style="text-align: center; color: #E5E0D8;">
+                <h2 style="font-size: 3.5rem; margin-bottom: 20px; font-weight: 500;">Awards & Recognition</h2>
+                <p style="font-family: var(--font-body); max-width: 600px; margin: 0 auto 30px; font-size: 1.1rem; color: #A89588;">Our spirits have been recognized globally for their exceptional quality and craftsmanship.</p>
+                <a href="#" style="display: inline-block; padding: 12px 30px; border: 1px solid #B89A6A; color: #B89A6A; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; font-size: 0.8rem; font-weight: 600; transition: all 0.3s; background: rgba(184, 154, 106, 0.1);">Explore Awards</a>
+            </div>
+        </section>
+
+        <!-- Footer Content -->
+        <footer class="baagh-footer" style="position: relative; z-index: 10; background-color: transparent;">
+
+        <div class="footer-top" style="position: relative; z-index: 10; color: #E5E0D8; border-bottom: 1px solid rgba(229, 224, 216, 0.2); padding-bottom: 40px;">
+            <div class="footer-logo" style="display: flex; align-items: center; justify-content: flex-start;">
+                <img src="assets/images/igl_logo.png" alt="IGL Logo" style="height: 60px; width: auto; filter: brightness(0) invert(1);">
+            </div>
+            <div class="footer-links-col">
+                <a href="#legacy" style="color: #A89588; text-decoration: none;">LEGACY</a>
+                <a href="#craft" style="color: #A89588; text-decoration: none;">CRAFT</a>
+                <a href="#portfolio" style="color: #A89588; text-decoration: none;">PORTFOLIO</a>
+                <a href="#awards" style="color: #A89588; text-decoration: none;">AWARDS</a>
+                <a href="#" style="color: #A89588; text-decoration: none;">CONTACT US</a>
+            </div>
+            <div class="footer-contact">
+                <p style="color: #A89588;">hello@indiaglycols.com</p>
+                <div class="footer-links-col" style="gap: 10px;">
+                    <a href="#" style="color: #A89588; text-decoration: none;">INSTAGRAM ↗</a>
+                    <a href="#" style="color: #A89588; text-decoration: none;">FACEBOOK ↗</a>
+                </div>
+            </div>
+            <div class="footer-newsletter">
+                <h4 style="color: #E5E0D8;">Stay Updated</h4>
+                <form onsubmit="event.preventDefault();">
+                    <label style="color: #A89588;">* INDICATES REQUIRED<br>EMAIL ADDRESS *</label>
+                    <input type="email" required style="background: rgba(255,255,255,0.05); color: #E5E0D8; border: 1px solid rgba(184, 154, 106, 0.3);">
+                    <button type="submit" style="background: #B89A6A; color: #2C2925; border: none;">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom" style="position: relative; z-index: 10; color: rgba(229, 224, 216, 0.5);">
+            All rights reserved &copy; 2026 India Glycols Pvt. Ltd.
+        </div>
+    </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- 3D Scroll Reveal Observer ---
+            const revealElements = document.querySelectorAll('.scroll-3d-reveal');
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        // Optional: observer.unobserve(entry.target) to animate only once
+                    } else {
+                        entry.target.classList.remove('is-visible'); // Animate every time it scrolls into view
+                    }
+                });
+            }, {
+                root: null,
+                threshold: 0.15,
+                rootMargin: "0px 0px -50px 0px"
+            });
+
+            revealElements.forEach(el => revealObserver.observe(el));
+
+            const wrapper = document.getElementById('heroWrapper');
+            const card = document.getElementById('heroInteractiveCard');
+            const initialContent = document.getElementById('heroInitialContent');
+            const postcardContent = document.getElementById('heroPostcardContent');
+            const overlay = document.querySelector('.hero-overlay');
+            const header = document.getElementById('mainHeader');
+            const colorLayer = document.getElementById('heroColorLayer');
+
+            window.addEventListener('scroll', () => {
+                // Header scroll effect
+                if (window.scrollY > 50) {
+                    header.classList.add('header-scrolled');
+                } else {
+                    header.classList.remove('header-scrolled');
+                }
+
+                // Hero Interactive Scroll
+                const rect = wrapper.getBoundingClientRect();
+                const scrollDist = -rect.top; 
+                const maxScroll = wrapper.offsetHeight - window.innerHeight;
+                let progress = scrollDist / maxScroll;
+                
+                if (progress < 0) progress = 0;
+                if (progress > 1) progress = 1;
+
+                const startWidth = window.innerWidth;
+                const endWidth = Math.min(650, window.innerWidth * 0.85);
+                const currentWidth = startWidth - (startWidth - endWidth) * progress;
+
+                const startHeight = window.innerHeight;
+                const endHeight = Math.min(750, window.innerHeight * 0.85);
+                let currentHeight = startHeight - (startHeight - endHeight) * progress;
+                
+                card.style.width = currentWidth + 'px';
+                card.style.height = currentHeight + 'px';
+                
+                // Add equal margin top to match side margins for true postcard look
+                const sideMargin = (startWidth - currentWidth) / 2;
+                card.style.marginTop = sideMargin + 'px';
+                
+                card.style.borderRadius = (16 + (4 * progress)) + 'px';
+                card.style.transform = `rotate(${-5 * progress}deg)`;
+                card.style.boxShadow = `0 ${20 * progress}px ${50 * progress}px rgba(0,0,0,${0.1 * progress})`;
+
+                if (progress > 0.8) {
+                    card.classList.add('is-postcard');
+                } else {
+                    card.classList.remove('is-postcard');
+                }
+
+                // Initial content fades out between 0.3 and 0.5 progress
+                if (initialContent) {
+                    if (progress < 0.3) {
+                        initialContent.style.opacity = 1;
+                    } else if (progress < 0.5) {
+                        initialContent.style.opacity = 1 - ((progress - 0.3) * 5);
+                    } else {
+                        initialContent.style.opacity = 0;
+                    }
+                }
+                
+                // Postcard content (wax stamp) fades in from 0.5 to 1.0 progress
+                if (postcardContent) {
+                    if (progress > 0.5) {
+                        postcardContent.style.opacity = (progress - 0.5) * 2;
+                    } else {
+                        postcardContent.style.opacity = 0;
+                    }
+                }
+                
+                // Keep the image visible, just fade the dark overlay so the postcard looks brighter
+                let overlayOpacity = 0.4;
+                if(progress > 0.2) {
+                    overlayOpacity = Math.max(0, 0.4 - ((progress - 0.2) * 1.5));
+                }
+                overlay.style.background = `rgba(0, 0, 0, ${overlayOpacity})`;
+                // We do NOT fade out the video/image itself so it acts as the postcard background
+                
+                // Fade color image to monochrome and add smooth wind flow effect
+                if (colorLayer) {
+                    let fadeProgress = Math.min(1, progress / 0.7);
+                    colorLayer.style.opacity = 1 - fadeProgress;
+                    // Removed blur effect to keep the color image perfectly sharp
+                }
+                
+                // Fade in Header and Text at the bottom
+                const textContent = document.getElementById('heroTextContent');
+                if (progress > 0.6) {
+                    const fadeProgress = Math.min(1, (progress - 0.6) / 0.4); // 0 to 1
+                    header.style.opacity = fadeProgress;
+                    header.style.pointerEvents = fadeProgress > 0.5 ? 'auto' : 'none';
+                    
+                    textContent.style.opacity = fadeProgress;
+                    textContent.style.transform = `translateY(${20 * (1 - fadeProgress)}px)`;
+                } else {
+                    header.style.opacity = 0;
+                    header.style.pointerEvents = 'none';
+                    textContent.style.opacity = 0;
+                    textContent.style.transform = 'translateY(20px)';
+                }
+            });
+            
+            // Trigger once on load
+            window.dispatchEvent(new Event('scroll'));
+        });
+    </script>
+</body>
+</html>
